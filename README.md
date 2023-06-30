@@ -5,6 +5,9 @@
 </p>
 
 ## Installation
+
+- [You can also use the Chrome Extension which requires no extra steps. Click Here ](https://chrome.google.com/webstore/detail/discord-token-login/dgejhipdiojpnoggmehdiicanhnbdngk) 
+
 ```js
   * Install as zip OR Download Releases (unzip)
   * Go to chrome://extensions/
