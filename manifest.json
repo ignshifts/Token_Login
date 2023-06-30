@@ -1,24 +1,22 @@
 {
+  "manifest_version": 3,
+  "name": "Discord Token Login",
+  "version": "1.0",
+  "description": "Login to Discord using a token",
 
-    "manifest_version": 2,
-    "name": "Discord Token Login",
-    "version": "1.0.1",
+  "icons": {
+    "128": "logo.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "logo.png"
+    }
+  },
 
-    "description": "Logging into a Discord account using a token, made easier.",
-    "icons": {"128": "logo.png"},
-
-    "browser_action": {
-        "default_popup": "index.html",
-        "default_icon": "logo.png"
-    },
-
-    "background": {
-        "scripts": ["script.js"],
-        "persistent": true
-    },
-
-    "permissions": [
-        "http://*.discord.com/*",
-        "https://*.discord.com/*"
-    ]
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ]
+  
 }
