@@ -8,7 +8,7 @@
     "128": "logo.png"
   },
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "index.html",
     "default_icon": {
       "128": "logo.png"
     }
@@ -18,5 +18,4 @@
     "activeTab",
     "scripting"
   ]
-  
 }
