@@ -1,78 +1,146 @@
 body {
-    background-color: #596aed;
-}
-
-.contact-label {
-    color: #00a8e5;
-    font-family: 'Noto Sans JP', sans-serif;
-    text-decoration: none;
-    width: 51px;
+    background-color: #282b30; /* Darker background color */
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
-    color: white;
-    height: 150px;
-    width: 300px;
-}
-
-.inner-container {
-    align-items: center;
+    color: #fff;
     background-color: #36393f;
-    border-radius: 4px;
-    display: flex;
-    height: 150px;
-    width: 300px;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
 }
 
-.invisible-box {
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 28px; /* Slightly larger title font size */
+    font-weight: 700;
+    text-align: center;
+}
+
+.login-form {
+    /* ... your existing properties ... */
     display: flex;
     flex-direction: column;
-    height: 110px;
-    margin-left: 15px;
-    width: 270px;
+    justify-content: flex-start;
+    align-items: center; /* Center the items horizontally */
 }
 
 .token-label {
-    color: #b9bbbe;
-    font-family: 'Secular One', sans-serif;
-    font-size: 15px;
-    margin-top: -1px;
-}
-
-.unselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-#submit {
-    background-color: #596aed;
-    border: none;
-    border-radius: 4px;
-    color: #fcfdff;
-    font-family: 'Lato', sans-serif;
-    font-size: 13px;
-    height: 30px;
-    margin-top: 10px;
-    transition: all .1s ease-in;
+    color: #bbb; /* Lighter label color */
+    font-size: 16px; /* Slightly larger label font size */
+    margin-bottom: 10px;
 }
 
 #token {
-    color: #d5d6d7;
-    background-color: #303339;
-    border: 1px solid #222428;
+    color: #fff; /* White text color for better visibility */
+    background-color: #4f5258; /* Darker input background color */
+    border: 1px solid #33363a; /* Darker border color */
     border-radius: 4px;
-    font-family: 'Lato', sans-serif;
-    height: 25px;
-    margin-top: -13px;
+    height: 44px; /* Slightly taller input box */
     outline: none;
     padding-left: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add drop shadow */
 }
 
-#submit:hover {
-    background-color: #4856c0;
-    cursor: pointer;
+.support-link {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 auto; /* Center the link horizontally */
+    font-size: 14px;
+    display: block; /* Ensure the link takes the full width of its container */
+    text-align: center; /* Center the link's text */
+    padding: 10px 0; /* Add some padding to the link */
 }
+
+.login-button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    height: 44px;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 0 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;  
+    
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.message-box {
+    /* ... other styles ... */
+    position: absolute;
+    top: 20px; /* Adjust top position to move it to the top */
+    left: 10px; /* Adjust left position to move it further to the left */
+    background-color: #ff5a5a; /* Red background color for error message */
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.close-button {
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 8px;
+}
+.button-container {
+    display: flex;
+    align-items: center; /* Center the buttons vertically */
+    justify-content: space-between; /* Space the buttons evenly */
+    width: 100%; /* Set the width to 100% to occupy the full width of the login form */
+    margin-bottom: 20px; /* Add some space between the buttons and other elements */
+}
+
+
+#copy-token-button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 5px;
+    background-image: url('tool.png'); /* Set the background image */
+    background-size: cover; /* Adjust the image size to cover the button */
+    background-position: center; /* Center the image within the button */
+}
+
+#copy-token-button.disabled {
+    /* Add the styles for the disabled button here */
+    cursor: not-allowed; /* Change the cursor to show it's not clickable */
+    filter: grayscale(100%); /* Make the button grayed out */
+    opacity: 0.5; /* Reduce the opacity to further indicate it's disabled */
+  }
