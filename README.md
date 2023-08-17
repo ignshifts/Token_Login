@@ -19,7 +19,7 @@
 ```
 ## Example
 ![image](https://github.com/ignshifts/Token_Login/assets/74390871/df0b582a-a276-4639-b47a-95890555bd63)
-
+> Image is scaled up so the css is different, GUI looks different on the extension.
 
 ##  Usage:
 ```css
