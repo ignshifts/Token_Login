@@ -17,6 +17,9 @@
   * Click the extension then paste token in the input box.
   * Page will reload if your token is valid
 ```
+## Example
+![image](https://github.com/ignshifts/Token_Login/assets/74390871/df0b582a-a276-4639-b47a-95890555bd63)
+
 
 ##  Usage:
 ```css
