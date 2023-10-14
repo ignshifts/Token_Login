@@ -18,8 +18,7 @@
   * Page will reload if your token is valid
 ```
 ## Example
-![image](https://github.com/ignshifts/Token_Login/assets/74390871/df0b582a-a276-4639-b47a-95890555bd63)
-> Image is scaled up so the css is different, GUI looks different on the extension.
+![login ](https://github.com/ignshifts/Token_Login/assets/74390871/00dd3e8d-1ff5-4568-b3ab-67cba84e8206)
 
 ##  Usage:
 ```css
