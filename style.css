@@ -20,7 +20,9 @@ body {
 .header {
     display: flex;
     align-items: center;
+    justify-content: center; /* Center both horizontally and vertically */
     margin-bottom: 20px;
+    text-align: center; /* Center the text within the header */
 }
 
 .logo {
@@ -71,9 +73,8 @@ body {
     text-align: center; /* Center the link's text */
     padding: 10px 0; /* Add some padding to the link */
 }
-
-.login-button {
-    background-color: #007bff;
+/*
+ background-color: #007bff;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -82,16 +83,22 @@ body {
     transition: background-color 0.2s ease-in-out;
     cursor: pointer;
     text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-align: center;
-    padding: 0 24px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    outline: none;  
-    
+
+*/
+.login-button {
+    width: 96px;
+        height: 44px;
+        border-radius: 4px;
+        color: #FFFFFF;
+        background-color: #5865f2;
+        border: none;
+        font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        text-decoration: none;
 }
 
 .login-button:hover {
+    cursor: pointer;
     background-color: #0056b3;
 }
 
