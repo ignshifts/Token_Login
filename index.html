@@ -2,32 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord Token Login</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Noto+Sans+JP:wght@500&family=Secular+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="discord-token-login-popup">
-    <div class="container">
+<body>
+    <div class="popup-container">
+        <!-- Header -->
         <div class="header">
-            <h1 class="title"> Discord Token Login </h1> 
+            <div class="header-content">
+                <img src="logo.png" alt="Discord" class="logo">
+                <h1 class="title">Discord Token</h1>
+            </div>
+            <div class="version">v1.3</div>
         </div>
-        <div class="inner-container">
-            <div class="login-form">
-                <label for="token" class="token-label">Enter Your Discord Token</label>
-                <input id="token" type="password" spellcheck="false" placeholder="Your Discord Token">
-                <a href="https://discord.gg/48qbg6UP9g" title="Discord Server"class="support-link">Need Support?</a>
-                <button id="submit" class="login-button" title="Login">Login</button>
-                <button id="copy-token-button" class="copy-button" title="Copy Token"></button>
-                <div id="overlay"></div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Token Input Section -->
+            <div class="input-section">
+                <label for="token" class="input-label">Discord Token</label>
+                <div class="input-wrapper">
+                    <input id="token" type="password" placeholder="Enter your Discord token..." autocomplete="off" spellcheck="false">
+                    <button id="toggle-visibility" class="toggle-btn" type="button" title="Show/Hide token">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="button-section">
+                <button id="login-btn" class="primary-btn">
+                    <span>Login to Discord</span>
+                </button>
+                
+                <button id="copy-token-btn" class="secondary-btn" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    </svg>
+                    <span>Copy Token from Discord</span>
+                </button>
+            </div>
+
+            <!-- Help Link -->
+            <div class="help-section">
+                <a href="#" id="support-link" class="help-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    Need help?
+                </a>
             </div>
         </div>
+
+        <!-- Status Message -->
+        <div id="status-message" class="status-message hidden">
+            <div class="status-content">
+                <span class="status-text"></span>
+                <button class="status-close" type="button">&times;</button>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+            <div class="loading-spinner"></div>
+        </div>
     </div>
-    <div class="message-box" id="messageBox"> <!-- New div for displaying messages -->
-    </div>
+
     <script src="popup.js"></script>
 </body>
 </html>

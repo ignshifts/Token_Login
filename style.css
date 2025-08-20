@@ -1,153 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #282b30; /* Darker background color */
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
+    justify-content: center;
+    padding: 20px;
     margin: 0;
 }
 
-.container {
-    color: #fff;
-    background-color: #36393f;
-    border-radius: 12px;
-    padding: 30px;
-    max-width: 400px;
-    width: 100%;
+/* Main container */
+.popup-container {
+    width: 380px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
 }
 
+
 .header {
+    background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+    padding: 24px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center both horizontally and vertically */
-    margin-bottom: 20px;
-    text-align: center; /* Center the text within the header */
+    gap: 12px;
 }
 
 .logo {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
 }
 
 .title {
-    font-size: 28px; /* Slightly larger title font size */
-    font-weight: 700;
-    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
 }
 
-.login-form {
-    /* ... your existing properties ... */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center; /* Center the items horizontally */
+.version {
+    font-size: 12px;
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 12px;
 }
 
-.token-label {
-    color: #bbb; /* Lighter label color */
-    font-size: 16px; /* Slightly larger label font size */
-    margin-bottom: 10px;
+
+.content {
+    padding: 32px 24px 24px;
+}
+
+
+.input-section {
+    margin-bottom: 24px;
+}
+
+.input-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
 }
 
 #token {
-    color: #fff; /* White text color for better visibility */
-    background-color: #4f5258; /* Darker input background color */
-    border: 1px solid #33363a; /* Darker border color */
-    border-radius: 4px;
-    height: 44px; /* Slightly taller input box */
+    width: 100%;
+    padding: 16px 50px 16px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    transition: all 0.2s ease;
+    background: #f9fafb;
+    color: #111827;
+}
+
+#token:focus {
     outline: none;
-    padding-left: 10px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    border-color: #5865f2;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.1);
 }
 
-.support-link {
-    color: #007bff;
-    text-decoration: none;
-    margin: 0 auto; /* Center the link horizontally */
-    font-size: 14px;
-    display: block; /* Ensure the link takes the full width of its container */
-    text-align: center; /* Center the link's text */
-    padding: 10px 0; /* Add some padding to the link */
-}
-/*
- background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 16px;
-    height: 44px;
-    transition: background-color 0.2s ease-in-out;
-    cursor: pointer;
-    text-transform: uppercase;
-
-*/
-.login-button {
-    width: 96px;
-        height: 44px;
-        border-radius: 4px;
-        color: #FFFFFF;
-        background-color: #5865f2;
-        border: none;
-        font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-weight: 500;
-        text-decoration: none;
+#token.error {
+    border-color: #ef4444;
+    background: #fef2f2;
 }
 
-.login-button:hover {
-    cursor: pointer;
-    background-color: #0056b3;
+#token.success {
+    border-color: #10b981;
+    background: #f0fdf4;
 }
 
-.message-box {
-    /* ... other styles ... */
+.toggle-btn {
     position: absolute;
-    top: 20px; /* Adjust top position to move it to the top */
-    left: 10px; /* Adjust left position to move it further to the left */
-    background-color: #ff5a5a; /* Red background color for error message */
-    color: #fff;
-    font-size: 14px;
-    padding: 8px 16px;
-    border-radius: 4px;
-}
-
-.close-button {
-    cursor: pointer;
-    float: right;
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 8px;
-}
-.button-container {
-    display: flex;
-    align-items: center; /* Center the buttons vertically */
-    justify-content: space-between; /* Space the buttons evenly */
-    width: 100%; /* Set the width to 100% to occupy the full width of the login form */
-    margin-bottom: 20px; /* Add some space between the buttons and other elements */
-}
-
-
-#copy-token-button {
-    background-color: #007bff;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
     border: none;
-    color: #fff;
-    font-size: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 6px;
+    color: #6b7280;
     cursor: pointer;
-    margin-top: 5px;
-    background-image: url('tool.png'); /* Set the background image */
-    background-size: cover; /* Adjust the image size to cover the button */
-    background-position: center; /* Center the image within the button */
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
 }
 
-#copy-token-button.disabled {
-    /* Add the styles for the disabled button here */
-    cursor: not-allowed; /* Change the cursor to show it's not clickable */
-    filter: grayscale(100%); /* Make the button grayed out */
-    opacity: 0.5; /* Reduce the opacity to further indicate it's disabled */
-  }
+.toggle-btn:hover {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+
+.button-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.primary-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(88, 101, 242, 0.3);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+.primary-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 14px 20px;
+    background: #f8fafc;
+    color: #64748b;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #475569;
+}
+
+.secondary-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f8fafc;
+}
+
+.secondary-btn.enabled {
+    background: #ecfdf5;
+    border-color: #10b981;
+    color: #047857;
+}
+
+.secondary-btn.enabled:hover {
+    background: #d1fae5;
+    border-color: #059669;
+}
+
+.help-section {
+    text-align: center;
+}
+
+.help-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.help-link:hover {
+    color: #5865f2;
+}
+
+.status-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 24px;
+    z-index: 10;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.status-message:not(.hidden) {
+    transform: translateY(0);
+}
+
+.status-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-message.success .status-content {
+    background: #d1fae5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
+
+.status-message.error .status-content {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+}
+
+.status-message.info .status-content {
+    background: #dbeafe;
+    color: #1d4ed8;
+    border: 1px solid #93c5fd;
+}
+
+.status-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    color: inherit;
+    margin-left: 12px;
+}
+
+.status-close:hover {
+    opacity: 1;
+}
+
+/* L */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+.loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #5865f2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Util */
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 420px) {
+    .popup-container {
+        width: 340px;
+        margin: 10px;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .content {
+        padding: 24px 20px 20px;
+    }
+}
+
+svg {
+    flex-shrink: 0;
+}
+
+button:focus-visible {
+    outline: 2px solid #5865f2;
+    outline-offset: 2px;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.popup-container {
+    animation: fadeIn 0.3s ease-out;
+}
