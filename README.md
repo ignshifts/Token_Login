@@ -16,7 +16,7 @@
   * Page will reload regardless if your token is valid. To only have it reload on valid tokens, enable "Verify Token With API" in settings.
 ```
 ## Example
-<img width="505" height="508" alt="image" src="https://github.com/user-attachments/assets/5b5a5400-f6fb-4f3b-b037-fe3de2ef4629"/>
+<img width="1280" height="800" alt="ss" src="https://github.com/user-attachments/assets/b0871734-1e68-483d-aa58-addbbcd2bab6" />
 
 ##  Usage:
 Go to [Discord](https://discord.com/login) </br>
