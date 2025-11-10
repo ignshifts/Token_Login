@@ -2,11 +2,7 @@
   "update_url": "https://clients2.google.com/service/update2/crx",
   "manifest_version": 3,
   "name": "Discord Token Login",
-<<<<<<< HEAD
   "version": "1.0.1",
-=======
-  "version": "1.0",
->>>>>>> d44adbb5aa27f6aac492bf8ce88760df209e9a66
   "description": "Login to Discord with your user token.",
 
   "icons": {
@@ -30,4 +26,5 @@
     "https://discord.com/login*"
   ]
 }
+
 
