@@ -2,7 +2,7 @@
   "update_url": "https://clients2.google.com/service/update2/crx",
   "manifest_version": 3,
   "name": "Discord Token Login",
-  "version": "1.3",
+  "version": "1.0",
   "description": "Login to Discord with a token.",
 
   "icons": {
@@ -18,7 +18,8 @@
 
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "storage"
   ],
 
   "host_permissions": [

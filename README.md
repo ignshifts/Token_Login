@@ -23,5 +23,5 @@ Go to [Discord](https://discord.com/login)
 Enter your token.
 
 ##  Credits:
- > Discord : [Shifts#1337](https://discord.com/users/994717305542021244)
+ > Discord : [iShifts](https://discord.com/users/994717305542021244)
  > <br>Leave a ⭐

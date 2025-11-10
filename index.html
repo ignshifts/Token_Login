@@ -17,7 +17,7 @@
                 <img src="logo.png" alt="Discord" class="logo">
                 <h1 class="title">Discord Token</h1>
             </div>
-            <div class="version">v1.3</div>
+            <div class="version" id="version-display">v1.0</div>
         </div>
 
         <!-- Main Content -->
@@ -49,11 +49,20 @@
                     </svg>
                     <span>Copy Token from Discord</span>
                 </button>
+                
+                <button id="discord-login-btn" class="discord-login-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span>Go to Discord</span>
+                </button>
             </div>
 
-            <!-- Help Link -->
-            <div class="help-section">
-                <a href="#" id="support-link" class="help-link">
+            <!-- Help & Settings Links -->
+            <div class="footer-links">
+                <a href="#" id="support-link" class="footer-link">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
@@ -61,20 +70,55 @@
                     </svg>
                     Need help?
                 </a>
-            </div>
-        </div>
-
-        <!-- Status Message -->
-        <div id="status-message" class="status-message hidden">
-            <div class="status-content">
-                <span class="status-text"></span>
-                <button class="status-close" type="button">&times;</button>
+                <a href="#" id="settings-link" class="footer-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6"></path>
+                        <path d="m4.93 4.93 4.24 4.24m5.66 5.66 4.24 4.24"></path>
+                        <path d="M1 12h6m6 0h6"></path>
+                        <path d="m4.93 19.07 4.24-4.24m5.66-5.66 4.24-4.24"></path>
+                    </svg>
+                    Settings
+                </a>
             </div>
         </div>
 
         <!-- Loading Overlay -->
         <div id="loading-overlay" class="loading-overlay hidden">
             <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="settings-panel hidden">
+        <div class="settings-container">
+            <div class="settings-header">
+                <h2 class="settings-title">Settings</h2>
+                <button id="close-settings" class="close-settings-btn" type="button">&times;</button>
+            </div>
+            <div class="settings-content">
+                <div class="setting-item">
+                    <div class="setting-main">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="verify-token-checkbox">
+                            <span class="checkmark"></span>
+                            <span class="setting-label">Verify Token with API</span>
+                        </label>
+                    </div>
+                    <p class="setting-description">
+                        When enabled, tokens will be sent to Discord's API to ensure they are valid. In theory, you should not face any bans but there is still a small risk.
+                        When disabled, only the token format will be validated locally by checking if the token matches a base64 string.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Message-->
+    <div id="status-message" class="status-message hidden">
+        <div class="status-content">
+            <span class="status-text"></span>
+            <button class="status-close" type="button">&times;</button>
         </div>
     </div>
 

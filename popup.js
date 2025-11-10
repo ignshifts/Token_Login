@@ -4,16 +4,22 @@ const loginBtn = document.getElementById('login-btn');
 const copyTokenBtn = document.getElementById('copy-token-btn');
 const toggleVisibilityBtn = document.getElementById('toggle-visibility');
 const supportLink = document.getElementById('support-link');
+const settingsLink = document.getElementById('settings-link');
+const settingsPanel = document.getElementById('settings-panel');
+const closeSettingsBtn = document.getElementById('close-settings');
+const verifyTokenCheckbox = document.getElementById('verify-token-checkbox');
 const statusMessage = document.getElementById('status-message');
 const loadingOverlay = document.getElementById('loading-overlay');
 
-
 let isTokenVisible = false;
+let verifyTokenEnabled = false;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     checkCurrentTab();
     setupEventListeners();
+    loadSettings();
+    displayVersion();
 });
 
 // Event Listeners
@@ -22,8 +28,23 @@ function setupEventListeners() {
     copyTokenBtn.addEventListener('click', handleCopyToken);
     toggleVisibilityBtn.addEventListener('click', toggleTokenVisibility);
     supportLink.addEventListener('click', openSupportLink);
+    settingsLink.addEventListener('click', openSettings);
+    closeSettingsBtn.addEventListener('click', closeSettings);
+    verifyTokenCheckbox.addEventListener('change', handleVerifyTokenToggle);
+    
+    const discordLoginBtn = document.getElementById('discord-login-btn');
+    if (discordLoginBtn) {
+        discordLoginBtn.addEventListener('click', openDiscordLogin);
+    }
     
     document.querySelector('.status-close').addEventListener('click', hideStatusMessage);
+    
+    // Close settings when clicking outside
+    settingsPanel.addEventListener('click', (e) => {
+        if (e.target === settingsPanel) {
+            closeSettings();
+        }
+    });
     
     tokenInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -72,20 +93,35 @@ async function handleLogin() {
     loginBtn.disabled = true;
     
     try {
-        const isValid = await verifyToken(token);
+        let isValid = false;
         
-        if (isValid) {
-            tokenInput.classList.add('success');
-            showStatusMessage('Token verified! Logging in...', 'success');
-            saveTokenAndRedirect(token);
+        if (verifyTokenEnabled) {
+            // Use API verification
+            isValid = await verifyTokenWithAPI(token);
+            if (isValid) {
+                tokenInput.classList.add('success');
+                showStatusMessage('Token verified with API! Logging in...', 'success');
+                saveTokenAndRedirect(token);
+            } else {
+                tokenInput.classList.add('error');
+                showStatusMessage('Invalid token. Please check your Discord token.', 'error');
+            }
         } else {
-            tokenInput.classList.add('error');
-            showStatusMessage('Invalid token. Please check your Discord token.', 'error');
+            // Use format validation
+            isValid = validateTokenFormat(token);
+            if (isValid) {
+                tokenInput.classList.add('success');
+                showStatusMessage('Token format valid! Logging in...', 'success');
+                saveTokenAndRedirect(token);
+            } else {
+                tokenInput.classList.add('error');
+                showStatusMessage('Invalid token format. Please check your Discord token.', 'error');
+            }
         }
     } catch (error) {
         console.error('Login error:', error);
         tokenInput.classList.add('error');
-        showStatusMessage('An error occurred during verification', 'error');
+        showStatusMessage('An error occurred during validation', 'error');
     } finally {
         showLoading(false);
         loginBtn.disabled = false;
@@ -177,8 +213,57 @@ function toggleTokenVisibility() {
     }
 }
 
-// Verify token 
-async function verifyToken(token) {
+// Validate token format using multiple methods
+function validateTokenFormat(token) {
+    // Method 1: Check minimum length (Discord tokens are typically 59+ characters)
+    if (token.length < 50) {
+        return false;
+    }
+    
+    // Method 2: Check for valid Base64 characters and structure
+    // Discord tokens consist of three parts separated by dots: userID.timestamp.hmac
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+        return false;
+    }
+    
+    // Method 3: Validate first part (User ID encoded in Base64)
+    try {
+        const userIdPart = parts[0];
+        // Try to decode the user ID from base64
+        const decoded = atob(userIdPart);
+        // Check if decoded value is a valid user ID (should be numeric)
+        if (!/^\d+$/.test(decoded)) {
+            return false;
+        }
+    } catch (e) {
+        return false;
+    }
+    
+    // Method 4: Check second part (timestamp) - should be base64 encoded
+    try {
+        if (parts[1].length < 5) {
+            return false;
+        }
+    } catch (e) {
+        return false;
+    }
+    
+    // Method 5: Check third part (HMAC) - should be base64-like string
+    if (parts[2].length < 20) {
+        return false;
+    }
+    
+    // Method 6: Overall format check - should only contain valid base64 characters and dots
+    if (!/^[A-Za-z0-9_\-]+\.[A-Za-z0-9_\-]+\.[A-Za-z0-9_\-]+$/.test(token)) {
+        return false;
+    }
+    
+    return true;
+}
+
+// Verify token with Discord API
+async function verifyTokenWithAPI(token) {
     try {
         const response = await fetch('https://discord.com/api/v10/users/@me', {
             headers: {
@@ -224,6 +309,46 @@ function openSupportLink(e) {
     chrome.tabs.create({ url: 'https://discord.gg/48qbg6UP9g' });
 }
 
+// Open Discord login
+function openDiscordLogin() {
+    chrome.tabs.create({ url: 'https://discord.com/login' });
+}
+
+// Settings functions
+function openSettings(e) {
+    e.preventDefault();
+    settingsPanel.classList.remove('hidden');
+}
+
+function closeSettings() {
+    settingsPanel.classList.add('hidden');
+}
+
+function handleVerifyTokenToggle() {
+    verifyTokenEnabled = verifyTokenCheckbox.checked;
+    saveSettings();
+}
+
+function loadSettings() {
+    chrome.storage.sync.get(['verifyTokenEnabled'], (result) => {
+        verifyTokenEnabled = result.verifyTokenEnabled || false;
+        verifyTokenCheckbox.checked = verifyTokenEnabled;
+    });
+}
+
+function saveSettings() {
+    chrome.storage.sync.set({ verifyTokenEnabled: verifyTokenEnabled });
+}
+
+
+function displayVersion() {
+    const manifest = chrome.runtime.getManifest();
+    const versionDisplay = document.getElementById('version-display');
+    if (versionDisplay && manifest.version) {
+        versionDisplay.textContent = `v${manifest.version}`;
+    }
+}
+
 // Show status message
 function showStatusMessage(message, type = 'info') {
     const statusText = statusMessage.querySelector('.status-text');
@@ -232,12 +357,10 @@ function showStatusMessage(message, type = 'info') {
     statusMessage.className = `status-message ${type}`;
     statusMessage.classList.remove('hidden');
     
-    // Auto hide after 5 seconds for non-error messages
-    if (type !== 'error') {
-        setTimeout(() => {
-            hideStatusMessage();
-        }, 5000);
-    }
+    // Auto hide after 5 seconds for all messages
+    setTimeout(() => {
+        hideStatusMessage();
+    }, 5000);
 }
 
 // Hide status message

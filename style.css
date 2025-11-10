@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -18,23 +18,24 @@ body {
 /* Main container */
 .popup-container {
     width: 380px;
-    background: rgba(255, 255, 255, 0.95);
+    background: #000000;
     backdrop-filter: blur(20px);
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 2px solid #FFD700;
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
     overflow: hidden;
     position: relative;
 }
 
 
 .header {
-    background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+    background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
     padding: 24px;
-    color: white;
+    color: #FFD700;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 2px solid #FFD700;
 }
 
 .header-content {
@@ -57,27 +58,29 @@ body {
 
 .version {
     font-size: 12px;
-    opacity: 0.8;
-    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.9;
+    background: #FFD700;
+    color: #000000;
     padding: 4px 8px;
     border-radius: 12px;
+    font-weight: 600;
 }
 
 
 .content {
-    padding: 32px 24px 24px;
+    padding: 24px 20px 20px;
 }
 
 
 .input-section {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .input-label {
     display: block;
     font-size: 14px;
     font-weight: 500;
-    color: #374151;
+    color: #FFD700;
     margin-bottom: 8px;
 }
 
@@ -88,30 +91,30 @@ body {
 #token {
     width: 100%;
     padding: 16px 50px 16px 16px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid #333333;
     border-radius: 12px;
     font-size: 14px;
     font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
     transition: all 0.2s ease;
-    background: #f9fafb;
-    color: #111827;
+    background: #1a1a1a;
+    color: #FFD700;
 }
 
 #token:focus {
     outline: none;
-    border-color: #5865f2;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.1);
+    border-color: #0066FF;
+    background: #0d0d0d;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.3);
 }
 
 #token.error {
-    border-color: #ef4444;
-    background: #fef2f2;
+    border-color: #FF0000;
+    background: #1a0000;
 }
 
 #token.success {
-    border-color: #10b981;
-    background: #f0fdf4;
+    border-color: #FFD700;
+    background: #1a1500;
 }
 
 .toggle-btn {
@@ -121,7 +124,7 @@ body {
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: #6b7280;
+    color: #FFD700;
     cursor: pointer;
     padding: 8px;
     border-radius: 6px;
@@ -129,26 +132,26 @@ body {
 }
 
 .toggle-btn:hover {
-    background: #f3f4f6;
-    color: #374151;
+    background: #1a1a1a;
+    color: #0066FF;
 }
 
 
 .button-section {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
 .primary-btn {
     width: 100%;
-    padding: 16px 24px;
-    background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
-    color: white;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
     border: none;
-    border-radius: 12px;
-    font-size: 15px;
+    border-radius: 10px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -160,7 +163,7 @@ body {
 
 .primary-btn:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 8px 16px rgba(88, 101, 242, 0.3);
+    box-shadow: 0 8px 16px rgba(255, 215, 0, 0.5);
 }
 
 .primary-btn:active {
@@ -175,12 +178,12 @@ body {
 
 .secondary-btn {
     width: 100%;
-    padding: 14px 20px;
-    background: #f8fafc;
-    color: #64748b;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    font-size: 14px;
+    padding: 12px 20px;
+    background: #1a1a1a;
+    color: #0066FF;
+    border: 2px solid #0066FF;
+    border-radius: 10px;
+    font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -191,88 +194,93 @@ body {
 }
 
 .secondary-btn:hover:not(:disabled) {
-    background: #f1f5f9;
-    border-color: #cbd5e1;
-    color: #475569;
+    background: #0066FF;
+    border-color: #0066FF;
+    color: #000000;
 }
 
 .secondary-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    background: #f8fafc;
+    background: #1a1a1a;
 }
 
 .secondary-btn.enabled {
-    background: #ecfdf5;
-    border-color: #10b981;
-    color: #047857;
+    background: #0066FF;
+    border-color: #FFD700;
+    color: #FFD700;
 }
 
 .secondary-btn.enabled:hover {
-    background: #d1fae5;
-    border-color: #059669;
+    background: #0052CC;
+    border-color: #FFD700;
 }
 
-.help-section {
-    text-align: center;
+.footer-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 16px;
 }
 
-.help-link {
+.footer-link {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: #6b7280;
+    color: #0066FF;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     transition: color 0.2s ease;
 }
 
-.help-link:hover {
-    color: #5865f2;
+.footer-link:hover {
+    color: #FFD700;
 }
 
 .status-message {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 16px 24px;
-    z-index: 10;
-    transform: translateY(-100%);
-    transition: transform 0.3s ease;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-150%);
+    padding: 0;
+    z-index: 1000;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 90%;
+    max-width: 360px;
 }
 
 .status-message:not(.hidden) {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
 }
 
 .status-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .status-message.success .status-content {
-    background: #d1fae5;
-    color: #047857;
-    border: 1px solid #a7f3d0;
+    background: #000000;
+    color: #FFD700;
+    border: 2px solid #FFD700;
 }
 
 .status-message.error .status-content {
-    background: #fee2e2;
-    color: #dc2626;
-    border: 1px solid #fca5a5;
+    background: #000000;
+    color: #FF3333;
+    border: 2px solid #FF0000;
 }
 
 .status-message.info .status-content {
-    background: #dbeafe;
-    color: #1d4ed8;
-    border: 1px solid #93c5fd;
+    background: #000000;
+    color: #0066FF;
+    border: 2px solid #0066FF;
 }
 
 .status-close {
@@ -297,7 +305,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -307,8 +315,8 @@ body {
 .loading-spinner {
     width: 24px;
     height: 24px;
-    border: 3px solid #e5e7eb;
-    border-top-color: #5865f2;
+    border: 3px solid #333333;
+    border-top-color: #FFD700;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -344,8 +352,179 @@ svg {
 }
 
 button:focus-visible {
-    outline: 2px solid #5865f2;
+    outline: 2px solid #FFD700;
     outline-offset: 2px;
+}
+
+/* Discord Login Button */
+.discord-login-btn {
+    width: 100%;
+    padding: 12px 20px;
+    background: #000000;
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.discord-login-btn:hover {
+    background: #FFD700;
+    border-color: #FFD700;
+    color: #000000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Settings Panel */
+.settings-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.settings-panel:not(.hidden) {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.settings-container {
+    width: 90%;
+    max-width: 380px;
+    background: #000000;
+    border: 2px solid #FFD700;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.settings-panel:not(.hidden) .settings-container {
+    transform: scale(1);
+}
+
+.settings-header {
+    background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom: 2px solid #FFD700;
+}
+
+.settings-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFD700;
+    margin: 0;
+}
+
+.close-settings-btn {
+    background: none;
+    border: none;
+    color: #FFD700;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    line-height: 1;
+}
+
+.close-settings-btn:hover {
+    transform: rotate(90deg);
+}
+
+.settings-content {
+    padding: 24px;
+}
+
+.setting-item {
+    margin-bottom: 20px;
+}
+
+.setting-main {
+    margin-bottom: 8px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    gap: 12px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0066FF;
+    border-radius: 4px;
+    background: #1a1a1a;
+    position: relative;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-container:hover .checkmark {
+    border-color: #FFD700;
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark {
+    background: #FFD700;
+    border-color: #FFD700;
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark::after {
+    content: '';
+    position: absolute;
+    left: 5.5px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid #000000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.setting-label {
+    color: #FFD700;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.setting-description {
+    color: #888888;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 32px;
 }
 
 input:focus-visible {
