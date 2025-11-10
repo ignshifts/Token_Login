@@ -13,13 +13,13 @@
   * Select the unzipped folder then Enable
   * Go to https://discord.com/login
   * Click the extension then paste token in the input box.
-  * Page will reload if your token is valid. It will also let you know if your token is valid.
+  * Page will reload regardless if your token is valid. To only have it reload on valid tokens, enable "Verify Token With API" in settings.
 ```
 ## Example
-<img width="640" height="400" alt="image" src="https://github.com/user-attachments/assets/275cd7b9-7a67-42c0-afc8-689a4185797e" />
+<img width="505" height="508" alt="image" src="https://github.com/user-attachments/assets/5b5a5400-f6fb-4f3b-b037-fe3de2ef4629"/>
 
 ##  Usage:
-Go to [Discord](https://discord.com/login)
+Go to [Discord](https://discord.com/login) </br>
 Enter your token.
 
 ##  Credits:
